@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOYS WORLD — O'yinchoqlar do'koni 🧸</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#ffd6ec,#fff3c4,#c4f1ff,#dcd6ff);background-size:400% 400%;animation:bgMove 15s ease infinite;color:#333;overflow-x:hidden}
+@keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+#splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);background-size:400% 400%;animation:bgMove 8s ease infinite;transition:opacity .6s,visibility .6s;padding:20px}
+#splash.hidden{opacity:0;visibility:hidden}
+#splash h1{font-family:'Baloo 2',cursive;font-size:clamp(28px,6vw,64px);color:#fff;text-shadow:0 4px 15px rgba(0,0,0,.25);line-height:1.3}
+#splash h1 span{display:inline-block;animation:bounceIn .6s ease backwards}
+@keyframes bounceIn{0%{transform:scale(0) translateY(-40px);opacity:0}60%{transform:scale(1.3)}100%{transform:scale(1);opacity:1}}
+#splash p{font-size:clamp(16px,3vw,24px);color:#fff;margin:15px 0 30px;font-weight:700;animation:float 2s ease infinite}
+.splash-btn{font-family:'Baloo 2',cursive;font-size:22px;padding:14px 45px;border:none;border-radius:50px;cursor:pointer;color:#8a2be2;background:#fff;box-shadow:0 8px 25px rgba(0,0,0,.2);transition:.3s}
+.splash-btn:hover{transform:scale(1.1) rotate(-2deg)}
+.float-emoji{position:absolute;font-size:45px;animation:float 3s ease infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-20px) rotate(5deg)}}
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:15px 5%;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.logo{font-family:'Baloo 2',cursive;font-size:26px;color:#8a2be2;display:flex;align-items:center;gap:8px}
+.logo .bear{font-size:34px;animation:wiggle 2s ease infinite;display:inline-block}
+@keyframes wiggle{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.contacts-top{display:flex;gap:10px;flex-wrap:wrap}
+.contacts-top a{text-decoration:none;font-weight:900;color:#ff4d94;font-size:14px;background:#fff0f6;padding:8px 14px;border-radius:50px;border:2px solid #ffb3d1;transition:.3s}
+.contacts-top a.ig{color:#cc2366;border-color:#f5b8d0}
+.contacts-top a.tg:hover{background:linear-gradient(135deg,#2193b0,#6dd5ed);color:#fff}
+.contacts-top a.ig:hover{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);color:#fff}
+.contacts-top a.ph:hover{background:linear-gradient(135deg,#ff4d94,#ff8c00);color:#fff}
+.hero{text-align:center;padding:70px 5% 40px}
+.hero h2{font-family:'Baloo 2',cursive;font-size:clamp(32px,7vw,70px);background:linear-gradient(90deg,#ff4d94,#8a2be2,#ff8c00,#00bfff,#ff4d94);background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 4s linear infinite}
+@keyframes rainbow{to{background-position:300% center}}
+.hero p{font-size:clamp(16px,3vw,22px);font-weight:700;color:#555;margin:15px auto;max-width:600px}
+.toys-row{font-size:clamp(30px,6vw,55px);margin-top:25px}
+.toys-row span{display:inline-block;animation:float 2.5s ease infinite}
+.toys-row span:nth-child(2){animation-delay:.2s}.toys-row span:nth-child(3){animation-delay:.4s}.toys-row span:nth-child(4){animation-delay:.6s}.toys-row span:nth-child(5){animation-delay:.8s}.toys-row span:nth-child(6){animation-delay:1s}.toys-row span:nth-child(7){animation-delay:1.2s}
+.main-card{max-width:700px;margin:0 auto;background:#fff;border-radius:30px;box-shadow:0 20px 60px rgba(138,43,226,.18);padding:30px;text-align:center}
+.photo-frame{position:relative;border-radius:22px;overflow:hidden;border:8px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.15);transition:.4s;background:#fdf3ff}
+.photo-frame:hover{transform:scale(1.02) rotate(-1deg)}
+.photo-frame img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}
+.photo-fallback{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;font-size:60px;background:linear-gradient(135deg,#ffe0f0,#fff8d6)}
+.photo-fallback span{animation:float 3s ease infinite}
+.badge{position:absolute;top:15px;left:15px;background:linear-gradient(90deg,#ff4d94,#ff8c00);color:#fff;font-family:'Baloo 2',cursive;padding:8px 20px;border-radius:50px;font-size:16px;box-shadow:0 5px 15px rgba(0,0,0,.25);animation:float 2s ease infinite}
+.contact-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}
+.contact-row a{text-decoration:none;font-weight:900;font-size:clamp(14px,2.5vw,17px);padding:13px 24px;border-radius:50px;transition:.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-tg{background:linear-gradient(135deg,#2193b0,#6dd5ed);color:#fff;box-shadow:0 8px 20px rgba(33,147,176,.4)}
+.btn-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;box-shadow:0 8px 20px rgba(220,39,102,.4)}
+.btn-phone{background:linear-gradient(135deg,#ff4d94,#ff8c00);color:#fff;box-shadow:0 8px 20px rgba(255,77,148,.4)}
+.contact-row a:hover{transform:translateY(-5px) scale(1.05)}
+.order-section{padding:70px 5%}
+.section-title{text-align:center;font-family:'Baloo 2',cursive;font-size:clamp(26px,5vw,44px);color:#8a2be2;margin-bottom:8px}
+.section-sub{text-align:center;font-weight:700;color:#777;margin-bottom:35px}
+form{max-width:640px;margin:0 auto;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#ff4d94,#8a2be2,#ff8c00) border-box;border:4px solid transparent;border-radius:28px;padding:35px 30px;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-weight:900;margin:14px 0 6px;color:#8a2be2;font-size:14px}
+input,select,textarea{width:100%;padding:13px 16px;border:2px solid #e0d5f5;border-radius:14px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;transition:.3s;background:#fdfbff}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#8a2be2;box-shadow:0 0 0 4px rgba(138,43,226,.15);transform:translateY(-2px)}
+textarea{resize:vertical;min-height:80px}
+.file-box{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;border:3px dashed #c9b6f0;border-radius:16px;cursor:pointer;font-weight:900;color:#8a2be2;transition:.3s;background:#faf7ff;text-align:center}
+.file-box:hover{background:#f1e9ff;border-color:#8a2be2;transform:translateY(-2px)}
+#previewWrap{display:none;margin-top:14px;position:relative;text-align:center}
+#previewImg{max-width:180px;max-height:180px;border-radius:14px;border:4px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.remove-photo{position:absolute;top:-10px;left:calc(50% + 70px);width:32px;height:32px;border-radius:50%;border:none;background:#ff4d4d;color:#fff;font-weight:900;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.file-name{font-size:13px;font-weight:700;color:#777;margin-top:6px}
+.hint{font-size:12px;font-weight:700;color:#999;margin-top:5px}
+.send-btn{width:100%;margin-top:25px;font-family:'Baloo 2',cursive;font-size:clamp(18px,3vw,24px);padding:16px;border:none;border-radius:50px;cursor:pointer;color:#fff;background:linear-gradient(135deg,#ff4d94,#8a2be2);box-shadow:0 10px 25px rgba(138,43,226,.4);transition:.3s;letter-spacing:1px}
+.send-btn:hover{transform:scale(1.03) translateY(-3px)}
+.send-btn:active{transform:scale(.97)}
+.send-btn:disabled{opacity:.6;cursor:wait}
+.form-msg{margin-top:14px;text-align:center;font-weight:900;border-radius:12px;padding:12px;display:none}
+.form-msg.ok{display:block;background:#e6fff0;color:#0a9d4c}
+.form-msg.err{display:block;background:#ffecec;color:#d63031}
+footer{background:#2d1b4e;color:#fff;text-align:center;padding:30px 5%;font-weight:700}
+footer .toys{font-size:30px;margin-bottom:10px}
+footer a{color:#ffd6ec;text-decoration:none;font-weight:900}
+footer .links{margin-top:10px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+.confetti{position:fixed;width:12px;height:12px;z-index:9998;top:-20px;animation:fall linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
+.bg-toy{position:fixed;font-size:38px;opacity:.18;z-index:-1;animation:floatUp linear infinite;pointer-events:none}
+@keyframes floatUp{from{transform:translateY(110vh) rotate(0)}to{transform:translateY(-15vh) rotate(360deg)}}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}header{justify-content:center}.main-card{padding:18px}form{padding:25px 18px}.contact-row a{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+
+<!-- 🎉 XUSH KELIBSIZ EKRANI -->
+<div id="splash">
+  <h1 id="welcomeText">TOYS WORLD GA HUSH KELIBSIZ!</h1>
+  <p>🧸 O'yinchoqlar dunyosiga marhamat! 🎈</p>
+  <button class="splash-btn" onclick="closeSplash()">Do'konga kirish 🚪</button>
+  <span class="float-emoji" style="top:12%;left:8%">🧸</span>
+  <span class="float-emoji" style="top:15%;right:10%;animation-delay:.5s">🚗</span>
+  <span class="float-emoji" style="bottom:20%;left:12%;animation-delay:1s">🎈</span>
+  <span class="float-emoji" style="bottom:15%;right:8%;animation-delay:1.5s">🎁</span>
+  <span class="float-emoji" style="top:45%;left:3%;animation-delay:.8s">🤖</span>
+  <span class="float-emoji" style="top:50%;right:4%;animation-delay:1.2s">🎀</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo"><span class="bear">🧸</span> TOYS WORLD</div>
+  <div class="contacts-top">
+    <a class="tg" href="https://t.me/toysworlduzcom" target="_blank">📩 Kanal</a>
+    <a class="ig" href="https://www.instagram.com/toys.world.uz" target="_blank">📸 Instagram</a>
+    <a class="ph" id="phoneLink" href="#">📞 Telefon</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h2>TOYS WORLD GA HUSH KELIBSIZ!</h2>
+  <p>Bolalaringiz uchun eng zo'r, eng sifatli va eng qiziqarli o'yinchoqlar shu yerda! 🎉</p>
+  <div class="toys-row"><span>🧸</span><span>🚗</span><span>🤖</span><span>🎀</span><span>🧩</span><span>⚽</span><span>🚀</span></div>
+</section>
+
+<!-- 📷 RASM + ALOQA -->
+<section style="padding:20px 5%">
+  <div class="main-card">
+    <div class="photo-frame">
+      <div class="badge">⭐ Bizning do'kon</div>
+      <img id="shopPhoto" src="" alt="Toys World" style="display:none">
+      <div class="photo-fallback" id="photoFallback">
+        <span>🧸</span><span style="animation-delay:.3s">🚙</span><span style="animation-delay:.6s">🎁</span>
+        <span style="animation-delay:.9s">🪁</span><span style="animation-delay:1.2s">🏆</span>
+      </div>
+    </div>
+    <h3 style="font-family:'Baloo 2',cursive;font-size:24px;color:#8a2be2;margin-top:20px">Biz bilan bog'laning!</h3>
+    <div class="contact-row">
+      <a class="btn-tg" href="https://t.me/toysworlduzcom" target="_blank">📩 Kanal: @toysworlduzcom</a>
+      <a class="btn-ig" href="https://www.instagram.com/toys.world.uz" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/></svg>
+        toys.world.uz</a>
+      <a class="btn-phone" id="phoneBigLink" href="#">📞 Telefon</a>
+    </div>
+  </div>
+</section>
+
+<!-- 📝 BUYURTMA FORMASI -->
+<section class="order-section" id="order">
+  <h2 class="section-title">📦 Buyurtma berish</h2>
+  <p class="section-sub">Rasm + hamma ma'lumot birga — rasm tagida yozuv bilan botga tushadi! 🚀</p>
+  <form id="orderForm">
+    <div class="form-row">
+      <div><label>👤 Ismingiz *</label><input type="text" id="fName" placeholder="Ism" required></div>
+      <div><label>👥 Familyangiz *</label><input type="text" id="fSurname" placeholder="Familya" required></div>
+    </div>
+    <div class="form-row">
+      <div><label>📩 Telegram useringiz</label><input type="text" id="fTelegram" placeholder="@username"></div>
+      <div><label>📞 Telefon raqamingiz *</label><input type="tel" id="fPhone" placeholder="+998 93 566 58 85" required></div>
+    </div>
+    <div class="form-row">
+      <div><label>🏠 Ko'cha / Manzil *</label><input type="text" id="fStreet" placeholder="Ko'cha, uy raqami" required></div>
+      <div><label>📍 Region / Tuman (Toshkent) *</label>
+        <select id="fRegion" required>
+          <option value="" disabled selected>Tumanni tanlang</option>
+          <option>Bektemir tumani</option><option>Chilonzor tumani</option>
+          <option>Mirzo Ulug'bek tumani</option><option>Mirobod tumani</option>
+          <option>Olmazor tumani</option><option>Sergeli tumani</option>
+          <option>Shayxontohur tumani</option><option>Uchtepa tumani</option>
+          <option>Yakkasaroy tumani</option><option>Yangihayot tumani</option>
+          <option>Yunusobod tumani</option><option>Yashnobod tumani</option>
+          <option>Toshkent viloyati</option>
+        </select>
+      </div>
+    </div>
+    <label>🎁 Qaysi o'yinchoq kerak?</label>
+    <select id="fToy">
+      <option value="" selected>Tanlanmagan / o'zim tanlayman</option>
+      <option>Qo'g'irchoq (ayiq, qunduz...) 🧸</option>
+      <option>Mashinalar 🚗</option><option>Robotlar 🤖</option>
+      <option>Qizlar uchun to'plamlar 🎀</option><option>Konstruktor / Lego 🧩</option>
+      <option>Sport o'yinchoqlari ⚽</option><option>Boshqa 🎁</option>
+    </select>
+    <label>📷 O'yinchoq rasmi (telefoningizdan) *</label>
+    <input type="file" id="fPhoto" accept="image/*" hidden>
+    <div class="file-box" id="fileBox">📸 Rasm tanlash / suratga olish</div>
+    <div class="hint">Rasm majburiy — Telegram'da rasm yuqorida, ma'lumotlar tagida chiqadi 📨</div>
+    <div id="previewWrap">
+      <img id="previewImg" alt="Tanlangan rasm">
+      <button type="button" class="remove-photo" id="removePhoto">✖</button>
+      <div class="file-name" id="fileName"></div>
+    </div>
+    <label>💬 Qo'shimcha izoh</label>
+    <textarea id="fNote" placeholder="Masalan: qizil rangda, o'lchami katta bo'lsin..."></textarea>
+    <button type="submit" class="send-btn" id="sendBtn">🚀 YUBORISH</button>
+    <div class="form-msg" id="formMsg"></div>
+  </form>
+</section>
+
+<footer>
+  <div class="toys">🧸 🚗 🎀 🤖 🎁</div>
+  <p>📍 Toshkent, O'zbekiston &nbsp;|&nbsp; 🧸 TOYS WORLD — O'yinchoqlar do'koni</p>
+  <div class="links">
+    <a href="https://t.me/toysworlduzcom" target="_blank">📩 Telegram kanal</a>
+    <a href="https://www.instagram.com/toys.world.uz" target="_blank">📸 Instagram</a>
+  </div>
+  <p style="margin-top:10px;opacity:.7">© 2026 Toys World. Barcha huquqlar himoyalangan.</p>
+</footer>
+
+<script>
+/* ═══════════ ⚙️ SOZLAMALAR — SHU YERNI O'ZGARTIRING! ═══════════ */
+const BOT_TOKEN = "8961175185:AAGw-3yg2OUKTiOI9k8xPgc-JncZHoasXfA"; // @BotFather dan olingan token
+const CHAT_ID   = "8353263902";          // Sizning ID (@userinfobot). Kanalga: "@toysworlduzcom"
+const SHOP_IMAGE_URL = "";                            // Do'kon rasmi linki (bo'sh bo'lsa emoji ko'rinadi)
+const SHOP_PHONE     = "+998 93 566 58 85";           // ✅ YANGI RAQAM
+/* ═══════════════════════════════════════════════════════════════ */
+
+const isNotSet = BOT_TOKEN.includes("BU_YERGA") || CHAT_ID.includes("BU_YERGA");
+document.getElementById("phoneLink").href = "tel:" + SHOP_PHONE.replace(/\s/g,"");
+document.getElementById("phoneBigLink").href = "tel:" + SHOP_PHONE.replace(/\s/g,"");
+document.getElementById("phoneBigLink").textContent = "📞 " + SHOP_PHONE;
+
+if (SHOP_IMAGE_URL) {
+  const img = document.getElementById("shopPhoto");
+  img.src = SHOP_IMAGE_URL; img.style.display = "block";
+  img.onerror = () => { img.style.display = "none"; };
+  document.getElementById("photoFallback").style.display = "none";
+}
+
+/* --- Xush kelibsiz: harflarni birma-bir sakratish --- */
+const wt = document.getElementById("welcomeText");
+wt.innerHTML = wt.textContent.split("").map((ch,i) =>
+  ch === " " ? "&nbsp;" : `<span style="animation-delay:${i*0.05}s">${ch}</span>`).join("");
+function closeSplash(){ document.getElementById("splash").classList.add("hidden"); }
+setTimeout(closeSplash, 6000);
+
+/* --- Fon uchuvchi o'yinchoqlar --- */
+const toys = ["🧸","🚗","🎈","🧩","🤖","🎀","⚽","🚀","🎁","🎠"];
+for (let i = 0; i < 12; i++) {
+  const s = document.createElement("span");
+  s.className = "bg-toy"; s.textContent = toys[i % toys.length];
+  s.style.left = Math.random()*95 + "vw";
+  s.style.animationDuration = (10 + Math.random()*15) + "s";
+  s.style.animationDelay = (-Math.random()*10) + "s";
+  document.body.appendChild(s);
+}
+
+/* --- Konfeti --- */
+function confetti(){
+  const colors = ["#ff4d94","#8a2be2","#ff8c00","#00bfff","#22c55e","#ffd93d"];
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random()*100 + "vw";
+    c.style.background = colors[i % colors.length];
+    c.style.animationDuration = (2 + Math.random()*2) + "s";
+    c.style.borderRadius = Math.random() > .5 ? "50%" : "0";
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 4200);
+  }
+}
+
+/* --- Rasm tanlash va ko'rish --- */
+const photoInput = document.getElementById("fPhoto");
+const previewWrap = document.getElementById("previewWrap");
+let chosenFile = null;
+
+document.getElementById("fileBox").onclick = () => photoInput.click();
+photoInput.addEventListener("change", () => {
+  const f = photoInput.files[0];
+  if (!f) { clearPhoto(); return; }
+  if (!f.type.startsWith("image/")) { alert("Iltimos, rasm faylini tanlang! 📷"); photoInput.value = ""; return; }
+  chosenFile = f;
+  document.getElementById("previewImg").src = URL.createObjectURL(f);
+  document.getElementById("fileName").textContent = "✅ " + f.name + " (" + (f.size/1024/1024).toFixed(2) + " MB)";
+  previewWrap.style.display = "block";
+  document.getElementById("fileBox").textContent = "🔄 Boshqa rasm tanlash";
+});
+document.getElementById("removePhoto").onclick = clearPhoto;
+function clearPhoto(){
+  chosenFile = null; photoInput.value = "";
+  previewWrap.style.display = "none";
+  document.getElementById("fileBox").textContent = "📸 Rasm tanlash / suratga olish";
+}
+
+/* --- Katta rasmni avtomatik kichraytirish --- */
+function compressImage(file){
+  return new Promise((resolve) => {
+    if (file.size < 9 * 1024 * 1024) return resolve(file);
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob(b => { URL.revokeObjectURL(url); resolve(b || file); }, "image/jpeg", 0.85);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* --- YUBORISH: rasm yuqorida, hamma ma'lumot rasm tagida (caption) → Telegram bot --- */
+document.getElementById("orderForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("formMsg");
+  const btn = document.getElementById("sendBtn");
+  msg.className = "form-msg";
+
+  if (isNotSet) {
+    msg.classList.add("err");
+    msg.textContent = "⚠️ Avval kod boshida BOT_TOKEN va CHAT_ID ni to'ldiring! (pastdagi yo'riqnoma)";
+    return;
+  }
+  if (!chosenFile) {
+    msg.classList.add("err");
+    msg.textContent = "📷 Iltimos, o'yinchoq rasmini yuklang — rasm majburiy!";
+    return;
+  }
+  const phone = document.getElementById("fPhone").value.replace(/[\s\-()]/g,"");
+  if (!/^\+?998\d{9}$/.test(phone)) {
+    msg.classList.add("err");
+    msg.textContent = "📞 Telefon raqam noto'g'ri! Masalan: +998 93 566 58 85";
+    return;
+  }
+
+  const g = id => document.getElementById(id).value.trim();
+  const text =
+`🧸 <b>TOYS WORLD — YANGI BUYURTMA!</b>
+
+👤 <b>Ism:</b> ${esc(g("fName"))}
+👥 <b>Familya:</b> ${esc(g("fSurname"))}
+📩 <b>Telegram:</b> ${esc(g("fTelegram")) || "—"}
+📞 <b>Telefon:</b> ${phone}
+🏠 <b>Ko'cha:</b> ${esc(g("fStreet"))}
+📍 <b>Tuman/Region:</b> ${esc(document.getElementById("fRegion").value)}
+🎁 <b>O'yinchoq:</b> ${esc(document.getElementById("fToy").value) || "—"}
+💬 <b>Izoh:</b> ${esc(g("fNote").slice(0,300)) || "—"}
+
+🕐 <i>${new Date().toLocaleString("uz-UZ")}</i>`;
+
+  btn.disabled = true; btn.textContent = "⏳ Yuborilmoqda...";
+  try {
+    const file = await compressImage(chosenFile);
+    const fd = new FormData();
+    fd.append("chat_id", CHAT_ID);
+    fd.append("caption", text);
+    fd.append("parse_mode", "HTML");
+    fd.append("photo", file, "oyinchoq.jpg");
+    const data = await (await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: "POST", body: fd })).json();
+    if (!data.ok) throw new Error(data.description || "Noma'lum xatolik");
+    msg.classList.add("ok");
+    msg.textContent = "✅ Buyurtmangiz yuborildi! Tez orada bog'lanamiz 🎉";
+    confetti();
+    e.target.reset();
+    clearPhoto();
+  } catch (err) {
+    msg.classList.add("err");
+    msg.textContent = "❌ Xatolik: " + err.message + " — Token va Chat ID ni tekshiring!";
+  }
+  btn.disabled = false; btn.textContent = "🚀 YUBORISH";
+});
+</script>
+</body>
+</html>
